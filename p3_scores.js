@@ -13,7 +13,14 @@ const scores = Array.from({ length: 20 }, () => Math.floor(Math.random() * 101))
 console.log("start:", scores);
 
 // (a)
-
+let scores_a = scores.filter((n) => n%2 === 1);
+console.log(scores_a);
 // (b)
-
+let scores_b = scores_a.map((n) => n*2);
+console.log(scores_b);
 // (c)
+let scores_c = scores_b.sort((a,b) => b - a);
+console.log(scores_c);
+
+let scores_d = scores_c.map((n)=>n/2);
+console.log(scores_d);
