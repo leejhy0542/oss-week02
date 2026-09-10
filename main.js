@@ -26,12 +26,12 @@
 // So: collect lines in the "line" handler, do the work in the "close" handler.
 
 import readline from "node:readline";
-
+import Inko from "inko";
 // TODO: import Inko from "inko" and create an instance
 
 const reverse = process.argv.includes("--reverse");
 const lines = [];
-
+const inko = new Inko();
 // stdin = what you type, stdout = the screen. rl reads stdin one line at a time.
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
@@ -53,4 +53,11 @@ rl.on("close", () => {
   //   1. 오픈 소스
   //   2. 깃허브 노드
   // Use ko2en instead of en2ko when reverse is true.
+  if(reverse){
+    lines.filter((n) => n !== "").map((n) => inko.ko2en(n)).forEach((n,i) => console.log(i+1,".",n));
+  }
+  else{
+    lines.filter((n) => n !== "").map((n) => inko.en2ko(n)).forEach((n,i) => console.log(i+1,".",n));
+  }
+
 });
